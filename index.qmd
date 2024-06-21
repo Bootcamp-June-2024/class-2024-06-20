@@ -1,10 +1,36 @@
 ---
+execute: 
+  echo: false
 ---
 
 ```{r}
+#| message: false
+#| label: setup
 library(tidyverse)
 
 
 x <- read_csv("toughestsport.csv")
+```
+
+
+
+```{r}
+selected_sports <- c("Boxing", "Ice Hockey", "Football", "Basketball", "Soccer", "Tennis", "Gymnastics", "Swimming")
+x_filtered <- x %>% filter(SPORT %in% selected_sports)
+
+# Gather the data into long format
+x_long <- x_filtered %>%
+  pivot_longer(cols = Endurance:Durability, names_to = "Attribute", values_to = "Value")
+
+# Create the faceted bar plot
+ggplot(x_long, aes(x = Attribute, y = Value, fill = Attribute)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ SPORT, scales = "free_y") +
+  theme_minimal() +
+  labs(title = "Comparison of Sports Attributes",
+       x = "Attribute",
+       y = "Value") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none")
 ```
 
