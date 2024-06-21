@@ -27,10 +27,15 @@ ggplot(x_long, aes(x = Attribute, y = Value, fill = Attribute)) +
   geom_bar(stat = "identity") +
   facet_wrap(~ SPORT, scales = "free_y") +
   theme_minimal() +
-  labs(title = "Comparison of Sports Attributes",
-       x = "Attribute",
-       y = "Value") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.position = "none")
+  labs(title = "Comparison of Sports Attributes") +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+    axis.text.y = element_text(size = 12),
+    plot.title = element_text(size = 20, face = "bold"),
+    strip.text = element_text(size = 14),
+    legend.position = "none"
+  )
 ```
 
