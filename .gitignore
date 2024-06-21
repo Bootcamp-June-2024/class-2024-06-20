@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+/.quarto/
+
+*Rproj
+
+archive.zip
+
+.DS_Store
+
